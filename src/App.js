@@ -1,4 +1,3 @@
-
 import React, { useEffect, useState } from "react";
 
 export default function App() {
@@ -16,7 +15,7 @@ export default function App() {
       clearInterval(intervalId);
     }
     return () => clearInterval(intervalId);
-  }, [isRunning]);
+  }, [isRunning, elapsedTime]);
 
   const startStop = () => {
     setIsRunning((prevIsRunning) => !prevIsRunning);
@@ -35,11 +34,12 @@ export default function App() {
 
   return (
     <div>
-      <h1>StopWatch</h1>
-      <p>Time:{formatTime(elapsedTime)}</p>
+      <h1 className="stopwatch-title">Stopwatch</h1>
+      <p>Time: {formatTime(elapsedTime)}</p>
       <button onClick={startStop}>{isRunning ? "Stop" : "Start"}</button>
       <button onClick={reset}>Reset</button>
     </div>
   );
 }
+
 
